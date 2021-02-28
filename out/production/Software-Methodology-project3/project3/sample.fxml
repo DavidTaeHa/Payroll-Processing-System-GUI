@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="452.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="452.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project3.Controller">
    <children>
       <TabPane prefHeight="452.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -91,9 +91,9 @@
                         </GridPane>
                         <HBox alignment="CENTER" layoutX="4.0" layoutY="357.0" prefHeight="62.0" prefWidth="600.0" spacing="50.0">
                            <children>
-                              <Button mnemonicParsing="false" text="Add Employee" />
-                              <Button mnemonicParsing="false" text="Remove Employee" />
-                              <Button mnemonicParsing="false" text="Set Hours" />
+                              <Button fx:id="addEmployee" mnemonicParsing="false" onMouseClicked="#addEmployee" text="Add Employee" />
+                              <Button fx:id="removeEmployee" mnemonicParsing="false" onMouseClicked="#removeEmployee" text="Remove Employee" />
+                              <Button fx:id="setHours" mnemonicParsing="false" onMouseClicked="#setHours" text="Set Hours" />
                            </children>
                         </HBox>
                      </children>
@@ -106,15 +106,15 @@
                      <children>
                         <MenuButton layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="File">
                           <items>
-                            <MenuItem mnemonicParsing="false" text="Import" />
-                            <MenuItem mnemonicParsing="false" text="Export" />
+                            <MenuItem mnemonicParsing="false" onAction="#importData" text="Import" />
+                            <MenuItem mnemonicParsing="false" onAction="#exportData" text="Export" />
                           </items>
                         </MenuButton>
                         <MenuButton layoutX="80.0" layoutY="14.0" mnemonicParsing="false" text="Print">
                           <items>
-                            <MenuItem mnemonicParsing="false" text="Print" />
-                            <MenuItem mnemonicParsing="false" text="Print By Date Hired" />
-                              <MenuItem mnemonicParsing="false" text="Print By Department" />
+                            <MenuItem mnemonicParsing="false" onAction="#print" text="Print" />
+                            <MenuItem mnemonicParsing="false" onAction="#printByDate" text="Print By Date Hired" />
+                              <MenuItem mnemonicParsing="false" onAction="#printByDepartment" text="Print By Department" />
                           </items>
                         </MenuButton>
                         <TextArea layoutX="8.0" layoutY="47.0" prefHeight="317.0" prefWidth="584.0" />
