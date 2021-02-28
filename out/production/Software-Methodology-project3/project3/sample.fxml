@@ -1,16 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project3.Controller">
-   <columnConstraints>
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-   </rowConstraints>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="452.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Accordion />
+      <TabPane prefHeight="452.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Employee Management">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="410.0" prefWidth="600.0">
+                     <children>
+                        <GridPane alignment="CENTER_LEFT" layoutX="112.0" layoutY="26.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.4000244140625" minWidth="10.0" prefWidth="104.400048828125" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="540.0000114440918" minWidth="0.0" prefWidth="277.99995117187495" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="91.19998779296876" minHeight="0.0" prefHeight="33.59998779296875" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="196.8" minHeight="10.0" prefHeight="41.399975585937504" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="196.8" minHeight="10.0" prefHeight="41.4000244140625" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="196.8" minHeight="10.0" prefHeight="48.19998016357421" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="180.39997711181638" minHeight="5.800025939941406" prefHeight="51.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="199.3999740600586" minHeight="10.0" prefHeight="37.99998474121094" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="199.3999740600586" minHeight="10.0" prefHeight="37.99998474121094" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="199.3999740600586" minHeight="10.0" prefHeight="36.79999389648438" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Department:" GridPane.rowIndex="1" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date Hired:" GridPane.rowIndex="4" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Annual Salary:" GridPane.rowIndex="5" />
+                              <TextField GridPane.columnIndex="1" />
+                              <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <TextField prefHeight="26.0" prefWidth="204.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="307.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <children>
+                                    <RadioButton mnemonicParsing="false" prefHeight="18.0" prefWidth="48.0" text="CS">
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="Department" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                    <RadioButton mnemonicParsing="false" prefHeight="18.0" prefWidth="50.0" text="ECE" toggleGroup="$Department" />
+                                    <RadioButton mnemonicParsing="false" text="IT" toggleGroup="$Department" />
+                                 </children>
+                              </HBox>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Employee Type:" GridPane.rowIndex="2" />
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <children>
+                                    <RadioButton mnemonicParsing="false" prefHeight="18.0" prefWidth="77.0" text="Fulltime">
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="Employee" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                    <RadioButton mnemonicParsing="false" prefHeight="18.0" prefWidth="77.0" text="Parttime" toggleGroup="$Employee" />
+                                    <RadioButton mnemonicParsing="false" text="Management" toggleGroup="$Employee" />
+                                 </children>
+                              </HBox>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hours Worked:" GridPane.rowIndex="7" />
+                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Management Role:" GridPane.rowIndex="3" />
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <children>
+                                    <RadioButton mnemonicParsing="false" prefHeight="18.0" prefWidth="79.0" text="Manager">
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="Management" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                    <RadioButton mnemonicParsing="false" prefHeight="18.0" prefWidth="129.0" text="Department Head" toggleGroup="$Management" />
+                                    <RadioButton mnemonicParsing="false" text="Director" toggleGroup="$Management" />
+                                 </children>
+                              </HBox>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hourly Pay:" GridPane.rowIndex="6" />
+                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                           </children>
+                        </GridPane>
+                        <HBox alignment="CENTER" layoutX="4.0" layoutY="357.0" prefHeight="62.0" prefWidth="600.0" spacing="50.0">
+                           <children>
+                              <Button mnemonicParsing="false" text="Add Employee" />
+                              <Button mnemonicParsing="false" text="Remove Employee" />
+                              <Button mnemonicParsing="false" text="Set Hours" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Employee Database">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <MenuButton layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="File">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="Import" />
+                            <MenuItem mnemonicParsing="false" text="Export" />
+                          </items>
+                        </MenuButton>
+                        <MenuButton layoutX="80.0" layoutY="14.0" mnemonicParsing="false" text="Print">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="Print" />
+                            <MenuItem mnemonicParsing="false" text="Print By Date Hired" />
+                              <MenuItem mnemonicParsing="false" text="Print By Department" />
+                          </items>
+                        </MenuButton>
+                        <TextArea layoutX="8.0" layoutY="47.0" prefHeight="317.0" prefWidth="584.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
    </children>
-</GridPane>
+</AnchorPane>
