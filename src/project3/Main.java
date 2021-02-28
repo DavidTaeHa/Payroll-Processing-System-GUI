@@ -6,6 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Class that will set up the stage and scene
+ *
+ * @author David Ha, Andrew McAvoy
+ */
 public class Main extends Application {
 
     @Override
