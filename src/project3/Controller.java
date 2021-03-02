@@ -3,7 +3,6 @@ package project3;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 
 /**
@@ -39,7 +38,7 @@ public class Controller {
      * Enables the text fields that are required to add a fulltime employee
      */
     void enableFulltime(ActionEvent event) {
-
+        
     }
 
     @FXML
@@ -64,7 +63,7 @@ public class Controller {
      *
      * @param mouseEvent
      */
-    public void addEmployee(MouseEvent mouseEvent) {
+    public void addEmployee(ActionEvent event) {
     }
 
     @FXML
@@ -73,7 +72,7 @@ public class Controller {
      *
      * @param mouseEvent
      */
-    public void removeEmployee(MouseEvent mouseEvent) {
+    public void removeEmployee(ActionEvent event) {
     }
 
     @FXML
@@ -82,7 +81,7 @@ public class Controller {
      *
      * @param mouseEvent
      */
-    public void setHours(MouseEvent mouseEvent) {
+    public void setHours(ActionEvent event) {
 
     }
 
@@ -92,7 +91,7 @@ public class Controller {
      *
      * @param actionEvent
      */
-    public void importData(ActionEvent actionEvent) {
+    public void importData(ActionEvent event) {
     }
 
     @FXML
@@ -110,7 +109,7 @@ public class Controller {
      *
      * @param actionEvent
      */
-    public void print(ActionEvent actionEvent) {
+    public void print(ActionEvent event) {
     }
 
     @FXML
@@ -119,7 +118,7 @@ public class Controller {
      *
      * @param actionEvent
      */
-    public void printByDate(ActionEvent actionEvent) {
+    public void printByDate(ActionEvent event) {
     }
 
     @FXML
@@ -128,6 +127,6 @@ public class Controller {
      *
      * @param actionEvent
      */
-    public void printByDepartment(ActionEvent actionEvent) {
+    public void printByDepartment(ActionEvent event) {
     }
 }
