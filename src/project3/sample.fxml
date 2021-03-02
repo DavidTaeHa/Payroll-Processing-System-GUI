@@ -47,7 +47,7 @@
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Annual Salary:" GridPane.rowIndex="5" />
                               <TextField GridPane.columnIndex="1" />
                               <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                              <TextField prefHeight="26.0" prefWidth="204.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <TextField disable="true" prefHeight="26.0" prefWidth="204.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                               <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="307.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <children>
                                     <RadioButton mnemonicParsing="false" prefHeight="18.0" prefWidth="48.0" text="CS">
@@ -72,9 +72,9 @@
                                  </children>
                               </HBox>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hours Worked:" GridPane.rowIndex="7" />
-                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                              <TextField disable="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Management Role:" GridPane.rowIndex="3" />
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                              <HBox alignment="CENTER_LEFT" disable="true" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                  <children>
                                     <RadioButton mnemonicParsing="false" prefHeight="18.0" prefWidth="79.0" text="Manager">
                                        <toggleGroup>
@@ -86,17 +86,17 @@
                                  </children>
                               </HBox>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hourly Pay:" GridPane.rowIndex="6" />
-                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <TextField disable="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                            </children>
                         </GridPane>
                         <HBox alignment="CENTER" layoutX="4.0" layoutY="357.0" prefHeight="62.0" prefWidth="600.0" spacing="50.0">
                            <children>
-                              <Button fx:id="addEmployee" mnemonicParsing="false" onMouseClicked="#addEmployee" text="Add Employee" />
-                              <Button fx:id="removeEmployee" mnemonicParsing="false" onMouseClicked="#removeEmployee" text="Remove Employee" />
-                              <Button fx:id="setHours" mnemonicParsing="false" onMouseClicked="#setHours" text="Set Hours" />
+                              <Button fx:id="addEmployee" disable="true" mnemonicParsing="false" onMouseClicked="#addEmployee" text="Add Employee" />
+                              <Button fx:id="removeEmployee" disable="true" mnemonicParsing="false" onMouseClicked="#removeEmployee" text="Remove Employee" />
+                              <Button fx:id="setHours" disable="true" mnemonicParsing="false" onMouseClicked="#setHours" text="Set Hours" />
                            </children>
                         </HBox>
-                        <TextArea layoutX="9.0" layoutY="419.0" prefHeight="58.0" prefWidth="584.0" editable="false"/>
+                        <TextArea editable="false" layoutX="9.0" layoutY="419.0" prefHeight="58.0" prefWidth="584.0" />
                      </children>
                   </AnchorPane>
             </content>
@@ -118,7 +118,8 @@
                               <MenuItem mnemonicParsing="false" onAction="#printByDepartment" text="Print By Department" />
                           </items>
                         </MenuButton>
-                        <TextArea layoutX="8.0" layoutY="47.0" prefHeight="317.0" prefWidth="584.0" editable="false"/>
+                        <TextArea editable="false" layoutX="8.0" layoutY="47.0" prefHeight="317.0" prefWidth="584.0" />
+                        <Button layoutX="151.0" layoutY="14.0" mnemonicParsing="false" text="Compute Payment" />
                      </children>
                   </AnchorPane>
             </content>

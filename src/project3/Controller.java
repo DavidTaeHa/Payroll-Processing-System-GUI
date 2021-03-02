@@ -1,7 +1,10 @@
 package project3;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 
 /**
  * Class that will handle all the user input and output
@@ -10,6 +13,25 @@ import javafx.scene.input.MouseEvent;
  */
 public class Controller {
 
+    @FXML
+    private TextField nameField, salaryField, hoursField, hourlyField;
+
+    @FXML
+    private DatePicker dateField;
+
+    @FXML
+    private HBox departmentGroup, employeeGroup, managementGroup;
+
+    @FXML
+    private ToggleGroup department, employee, management;
+
+    @FXML
+    private Button addButton, removeButton, setHoursButton, computeButton;
+
+    @FXML
+    private MenuItem importButton, exportButton, printButton, printDateButton, printDepartmentButton;
+
+    @FXML
     /**
      * Adds employee to the container
      *
@@ -18,6 +40,7 @@ public class Controller {
     public void addEmployee(MouseEvent mouseEvent) {
     }
 
+    @FXML
     /**
      * Removes employee from the container
      *
@@ -26,6 +49,7 @@ public class Controller {
     public void removeEmployee(MouseEvent mouseEvent) {
     }
 
+    @FXML
     /**
      * Sets hours for a parttime employee
      *
@@ -35,6 +59,7 @@ public class Controller {
 
     }
 
+    @FXML
     /**
      * Imports database from a text file to the container
      *
@@ -43,6 +68,7 @@ public class Controller {
     public void importData(ActionEvent actionEvent) {
     }
 
+    @FXML
     /**
      * Exports database to a text file
      *
@@ -51,6 +77,7 @@ public class Controller {
     public void exportData(ActionEvent actionEvent) {
     }
 
+    @FXML
     /**
      * Prints employees from the container
      *
@@ -59,6 +86,7 @@ public class Controller {
     public void print(ActionEvent actionEvent) {
     }
 
+    @FXML
     /**
      * Prints employees from the container by date hired
      *
@@ -67,6 +95,7 @@ public class Controller {
     public void printByDate(ActionEvent actionEvent) {
     }
 
+    @FXML
     /**
      * Prints employees from the container by department
      *

@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * Class that will set up the stage and scene
+ * Class that will set up the stage and scene for the GUI element of the project
  *
  * @author David Ha, Andrew McAvoy
  */
