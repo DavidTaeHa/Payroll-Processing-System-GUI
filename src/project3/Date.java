@@ -33,6 +33,9 @@ public class Date implements Comparable<Date> {
     final static int FEB_NONLEAPYEAR = 28;
     final static int FEB_LEAPYEAR = 29;
     final static int TWO_DIGITS = 10;
+    final static int LESS = -1;
+    final static int EQUAL = 0;
+    final static int GREATER = 1;
 
     /**
      * Constants for the isLeapYear method
@@ -162,19 +165,19 @@ public class Date implements Comparable<Date> {
     @Override
     public int compareTo(Date date) {
         if (year < date.year) {
-            return -1;
+            return LESS;
         } else if (year == date.year) {
             if (month < date.month) {
-                return -1;
+                return LESS;
             } else if (month == date.month) {
                 if (day < date.day) {
-                    return -1;
+                    return LESS;
                 } else if (day == date.day) {
-                    return 0;
+                    return EQUAL;
                 }
             }
         }
-        return 1;
+        return GREATER;
     }
 
     /**

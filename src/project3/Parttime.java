@@ -11,6 +11,9 @@ public class Parttime extends Employee{
     private int hoursWorked;
     private double hourlyRate;
 
+    final static int MAX_HOURS = 80;
+    final static double OVERTIME_MULTIPLIER =  1.5;
+
     /**
      * Constructor for Parttime class
      *
@@ -28,9 +31,9 @@ public class Parttime extends Employee{
      */
     @Override
     public void calculatePayment(){
-        if(hoursWorked > 80){
-            int overtimeHours = hoursWorked - 80;
-            double overtimePay = (overtimeHours) * (1.5 * hourlyRate);
+        if(hoursWorked > MAX_HOURS){
+            int overtimeHours = hoursWorked - MAX_HOURS;
+            double overtimePay = (overtimeHours) * (OVERTIME_MULTIPLIER * hourlyRate);
             super.setPayment((hoursWorked - overtimeHours) * hourlyRate + overtimePay);
         }
         else{

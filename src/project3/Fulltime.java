@@ -10,6 +10,8 @@ import java.text.DecimalFormat;
 public class Fulltime extends Employee {
     private double annualSalary;
 
+    final static double PAYPERIOD = 26.0;
+
     /**
      * Constructor for Fulltime class
      *
@@ -34,7 +36,7 @@ public class Fulltime extends Employee {
      */
     @Override
     public void calculatePayment() {
-        super.setPayment(annualSalary / 26.0);
+        super.setPayment(annualSalary / PAYPERIOD);
     }
 
     /**

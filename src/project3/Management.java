@@ -19,6 +19,8 @@ public class Management extends Fulltime {
     final static double DEPARTMENT_HEAD_COMP = 9500.0 / 26;
     final static double DIRECTOR_COMP = 12000.0 / 26;
 
+    final static double PAYPERIOD = 26.0;
+
     /**
      * Constructor for Management class
      *
@@ -38,13 +40,13 @@ public class Management extends Fulltime {
     public void calculatePayment() {
         switch (managementRole) {
             case MANAGER:
-                super.setPayment(super.getAnnualSalary() / 26 + MANAGER_COMP);
+                super.setPayment(super.getAnnualSalary() / PAYPERIOD + MANAGER_COMP);
                 break;
             case DEPARTMENT_HEAD:
-                super.setPayment(super.getAnnualSalary() / 26 + DEPARTMENT_HEAD_COMP);
+                super.setPayment(super.getAnnualSalary() / PAYPERIOD + DEPARTMENT_HEAD_COMP);
                 break;
             case DIRECTOR:
-                super.setPayment(super.getAnnualSalary() / 26 + DIRECTOR_COMP);
+                super.setPayment(super.getAnnualSalary() / PAYPERIOD + DIRECTOR_COMP);
                 break;
         }
     }
