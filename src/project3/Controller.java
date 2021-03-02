@@ -32,6 +32,33 @@ public class Controller {
     private MenuItem importButton, exportButton, printButton, printDateButton, printDepartmentButton;
 
     @FXML
+    private RadioButton fulltimeButton, parttimeButton, managementButton;
+
+    @FXML
+    /**
+     * Enables the text fields that are required to add a fulltime employee
+     */
+    void enableFulltime(ActionEvent event) {
+
+    }
+
+    @FXML
+    /**
+     * Enables the text fields that are required to add a management employee
+     */
+    void enableManagement(ActionEvent event) {
+
+    }
+
+    @FXML
+    /**
+     * Enables the text fields that are required to add a parttime employee
+     */
+    void enableParttime(ActionEvent event) {
+
+    }
+
+    @FXML
     /**
      * Adds employee to the container
      *
