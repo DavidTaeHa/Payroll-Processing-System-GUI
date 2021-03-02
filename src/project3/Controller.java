@@ -14,6 +14,10 @@ import javafx.scene.layout.HBox;
  */
 public class Controller {
 
+    final static int MANAGER = 1;
+    final static int DEPARTMENT_HEAD = 2;
+    final static int DIRECTOR = 3;
+
     @FXML
     private TextField nameField, salaryField, hoursField, hourlyField;
 
@@ -37,7 +41,7 @@ public class Controller {
             managerButton, deptHeadButton, directorButton;
 
     @FXML
-    private TextArea outputText;
+    private TextArea outputText, listArea;
 
     private Company company = new Company();
 
@@ -181,6 +185,56 @@ public class Controller {
      * @param mouseEvent
      */
     public void addEmployee(ActionEvent event) {
+        Date date = new Date(dateField.getValue().getMonthValue() + "/" + dateField.getValue().getDayOfMonth() +
+                "/" + dateField.getValue().getYear());
+        if (!date.isValid()) {
+            outputText.appendText(date + " is not a valid date!\n");
+            return;
+        }
+        if((!salaryField.getText().isEmpty() && Double.parseDouble(salaryField.getText()) < 0) ||
+                (!hourlyField.getText().isEmpty() && Double.parseDouble(hourlyField.getText()) < 0)){
+            outputText.appendText("Salary or hourly pay cannot be negative.\n");
+            return;
+        }
+        RadioButton newDepartment = (RadioButton) department.getSelectedToggle();
+        Profile profile = new Profile (nameField.getText(), newDepartment.getText(), date);
+        if(employee.getSelectedToggle().equals(fulltimeButton)){
+            Fulltime fulltime = new Fulltime(profile, Double.parseDouble(salaryField.getText()));
+            if (!company.add(fulltime)) {
+                outputText.appendText("Employee is already in the list\n");
+            } else {
+                outputText.appendText("Employee added.\n");
+            }
+        }
+        else if(employee.getSelectedToggle().equals(parttimeButton)){
+            Parttime parttime = new Parttime(profile, Double.parseDouble(hourlyField.getText()));
+            if (!company.add(parttime)) {
+                outputText.appendText("Employee is already in the list\n");
+            } else {
+                outputText.appendText("Employee added.\n");
+            }
+        }
+        else if(employee.getSelectedToggle().equals(managementButton)){
+            RadioButton newManagement = (RadioButton) management.getSelectedToggle();
+            int managementRole = -1;
+            switch (newManagement.getText()){
+                case "Manager":
+                    managementRole = MANAGER;
+                    break;
+                case "Department Head":
+                    managementRole = DEPARTMENT_HEAD;
+                    break;
+                case "Director":
+                    managementRole = DIRECTOR;
+            }
+            Management management = new Management(profile, Double.parseDouble(salaryField.getText()),
+                    managementRole);
+            if (!company.add(management)) {
+                outputText.appendText("Employee is already in the list\n");
+            } else {
+                outputText.appendText("Employee added.\n");
+            }
+        }
     }
 
     @FXML
@@ -190,6 +244,20 @@ public class Controller {
      * @param mouseEvent
      */
     public void removeEmployee(ActionEvent event) {
+        Date date = new Date(dateField.getValue().getMonthValue() + "/" + dateField.getValue().getDayOfMonth() +
+                "/" + dateField.getValue().getYear());
+        if (!date.isValid()) {
+            outputText.appendText(date + " is not a valid date!\n");
+            return;
+        }
+        RadioButton newDepartment = (RadioButton) department.getSelectedToggle();
+        Profile profile = new Profile (nameField.getText(), newDepartment.getText(), date);
+        Employee employee = new Employee(profile);
+        if (!company.remove(employee)) {
+            outputText.appendText("Employee doesn’t exist.\n");
+        } else {
+            outputText.appendText("Employee removed.\n");
+        }
     }
 
     @FXML
@@ -227,6 +295,8 @@ public class Controller {
      * @param actionEvent
      */
     public void print(ActionEvent event) {
+        listArea.clear();
+        listArea.appendText(company.print());
     }
 
     @FXML
@@ -236,6 +306,8 @@ public class Controller {
      * @param actionEvent
      */
     public void printByDate(ActionEvent event) {
+        listArea.clear();
+        listArea.appendText(company.printByDate());
     }
 
     @FXML
@@ -245,5 +317,7 @@ public class Controller {
      * @param actionEvent
      */
     public void printByDepartment(ActionEvent event) {
+        listArea.clear();
+        listArea.appendText(company.printByDepartment());
     }
 }

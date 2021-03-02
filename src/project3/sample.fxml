@@ -17,13 +17,13 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project3.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="565.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project3.Controller">
    <children>
-      <TabPane prefHeight="515.0" prefWidth="602.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="565.0" prefWidth="602.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Employee Management">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="410.0" prefWidth="600.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="496.0" prefWidth="602.0">
                      <children>
                         <GridPane alignment="CENTER_LEFT" layoutX="112.0" layoutY="26.0">
                            <columnConstraints>
@@ -46,7 +46,7 @@
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date Hired:" GridPane.rowIndex="4" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Annual Salary:" GridPane.rowIndex="5" />
                               <TextField fx:id="nameField" onKeyTyped="#enableAddRemove" GridPane.columnIndex="1" />
-                              <DatePicker fx:id="dateField" onKeyTyped="#enableAddRemove" onMouseClicked="#enableAddRemove" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <DatePicker fx:id="dateField" onAction="#enableAddRemove" onKeyTyped="#enableAddRemove" onMouseClicked="#enableAddRemove" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                               <TextField fx:id="salaryField" disable="true" onKeyTyped="#enableAddKey" prefHeight="26.0" prefWidth="204.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                               <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="307.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <children>
@@ -96,7 +96,7 @@
                               <Button fx:id="setHoursButton" disable="true" mnemonicParsing="false" onAction="#setHours" text="Set Hours" />
                            </children>
                         </HBox>
-                        <TextArea fx:id="outputText" editable="false" layoutX="9.0" layoutY="419.0" prefHeight="58.0" prefWidth="584.0" />
+                        <TextArea fx:id="outputText" editable="false" layoutX="9.0" layoutY="419.0" prefHeight="107.0" prefWidth="584.0" />
                      </children>
                   </AnchorPane>
             </content>
@@ -118,7 +118,7 @@
                               <MenuItem fx:id="printDepartmentButton" mnemonicParsing="false" onAction="#printByDepartment" text="Print By Department" />
                           </items>
                         </MenuButton>
-                        <TextArea editable="false" layoutX="8.0" layoutY="47.0" prefHeight="317.0" prefWidth="584.0" />
+                        <TextArea fx:id="listArea" editable="false" layoutX="8.0" layoutY="47.0" prefHeight="478.0" prefWidth="584.0" />
                         <Button fx:id="computeButton" layoutX="151.0" layoutY="14.0" mnemonicParsing="false" text="Compute Payment" />
                      </children>
                   </AnchorPane>

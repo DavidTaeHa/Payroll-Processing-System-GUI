@@ -140,18 +140,23 @@ public class Company {
     /**
      * Prints earning statements for all employees
      */
-    public void print() {
+    public String print() {
+        String finalText = "";
         for (Employee employee : emplist) {
             if (employee != null) {
-                System.out.println(employee);
+                finalText = finalText + employee + "\n";
             }
         }
+        if(finalText.equals("")){
+            return "**Employee database is empty**";
+        }
+        return "--Printing earning statements for all employees--\n" + finalText;
     }
 
     /**
      * Prints earning statements by department
      */
-    public void printByDepartment() {
+    public String printByDepartment() {
         int min = INVALID;
         for (int i = 0; i < emplist.length; i++) {
             for (int j = i; j < emplist.length; j++) {
@@ -171,13 +176,13 @@ public class Company {
             emplist[min] = temp;
             min = INVALID;
         }
-        print();
+        return "--Printing earning statements by department--\n" + print();
     }
 
     /**
      * Prints earning statements by date hired
      */
-    public void printByDate() {
+    public String printByDate() {
         int min = INVALID;
         for (int i = 0; i < emplist.length; i++) {
             for (int j = i; j < emplist.length; j++) {
@@ -197,6 +202,6 @@ public class Company {
             emplist[min] = temp;
             min = INVALID;
         }
-        print();
+        return "--Printing earning statements by date hired--\n" + print();
     }
 }
