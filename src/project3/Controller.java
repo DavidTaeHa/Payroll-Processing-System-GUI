@@ -3,6 +3,8 @@ package project3;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 
 /**
@@ -19,7 +21,7 @@ public class Controller {
     private DatePicker dateField;
 
     @FXML
-    private HBox employeeGroup, managementGroup;
+    private HBox managementGroup;
 
     @FXML
     private ToggleGroup department, employee, management;
@@ -33,6 +35,11 @@ public class Controller {
     @FXML
     private RadioButton fulltimeButton, parttimeButton, managementButton,
             managerButton, deptHeadButton, directorButton;
+
+    @FXML
+    private TextArea outputText;
+
+    private Company company = new Company();
 
     private void resetManagement(RadioButton managerButton, RadioButton deptHeadButton, RadioButton directorButton){
         managerButton.setSelected(false);
@@ -49,6 +56,8 @@ public class Controller {
         hoursField.setDisable(true);
         hourlyField.setDisable(true);
         managementGroup.setDisable(true);
+        hourlyField.clear();
+        hoursField.clear();
         resetManagement(managerButton, deptHeadButton, directorButton);
     }
 
@@ -60,6 +69,8 @@ public class Controller {
         salaryField.setDisable(false);
         hoursField.setDisable(true);
         hourlyField.setDisable(true);
+        hourlyField.clear();
+        hoursField.clear();
         managementGroup.setDisable(false);
     }
 
@@ -72,7 +83,95 @@ public class Controller {
         hoursField.setDisable(false);
         hourlyField.setDisable(false);
         managementGroup.setDisable(true);
+        salaryField.clear();
         resetManagement(managerButton, deptHeadButton, directorButton);
+    }
+
+    @FXML
+    /**
+     * Enables the button that is required to set the hours of a parttime employee
+     */
+    void enableSetHours(KeyEvent event) {
+        if(!hoursField.getText().isEmpty()){
+            setHoursButton.setDisable(false);
+        }
+        else{
+            setHoursButton.setDisable(true);
+        }
+    }
+
+    /**
+     * Helper method to see if required fields are filled to enable the add button in the GUI
+     */
+    private void enableAdd(){
+        if(employee.getSelectedToggle() != null && employee.getSelectedToggle().equals(fulltimeButton)){
+            if(!nameField.getText().isEmpty() && department.getSelectedToggle() != null &&
+                    dateField.getValue() != null && !salaryField.getText().isEmpty()){
+                addButton.setDisable(false);
+            }
+            else{
+                addButton.setDisable(true);
+            }
+        }
+        else if(employee.getSelectedToggle() != null && employee.getSelectedToggle().equals(parttimeButton)){
+            if(!nameField.getText().isEmpty() && department.getSelectedToggle() != null &&
+                    dateField.getValue() != null && !hourlyField.getText().isEmpty()){
+                addButton.setDisable(false);
+            }
+            else{
+                addButton.setDisable(true);
+            }
+        }
+        else if(employee.getSelectedToggle() != null && employee.getSelectedToggle().equals(managementButton)){
+            if(!nameField.getText().isEmpty() && department.getSelectedToggle() != null &&
+                    dateField.getValue() != null && !salaryField.getText().isEmpty() &&
+                    management.getSelectedToggle() != null){
+                addButton.setDisable(false);
+            }
+            else{
+                addButton.setDisable(true);
+            }
+        }
+    }
+
+    @FXML
+    /**
+     * Checks required fields and enables the button that is required to add an employee to the container
+     * with key event as parameter
+     */
+    void enableAddKey(KeyEvent event) {
+        enableAdd();
+    }
+
+    @FXML
+    /**
+     * Checks required fields and enables the button that is required to add an employee to the container
+     * with mouse event as parameter
+     */
+    void enableAddMouse(MouseEvent event) {
+        enableAdd();
+    }
+
+    /**
+     * Helper method to check if required fields are filled and enable button to remove employees from the container
+     */
+    private void enableRemove(){
+        if(!nameField.getText().isEmpty() && dateField.getValue() != null && department.getSelectedToggle() != null){
+            removeButton.setDisable(false);
+        }
+        else{
+            removeButton.setDisable(true);
+        }
+    }
+
+    @FXML
+    /**
+     * Method to check if name field, department field, and date field are not null so that the add or remove button
+     * can be enable
+     */
+    void enableAddRemove(){
+        enableAdd();
+        enableRemove();
     }
 
     @FXML
