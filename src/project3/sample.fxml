@@ -96,7 +96,7 @@
                               <Button fx:id="setHours" mnemonicParsing="false" onMouseClicked="#setHours" text="Set Hours" />
                            </children>
                         </HBox>
-                        <TextArea layoutX="9.0" layoutY="419.0" prefHeight="58.0" prefWidth="584.0" />
+                        <TextArea layoutX="9.0" layoutY="419.0" prefHeight="58.0" prefWidth="584.0" editable="false"/>
                      </children>
                   </AnchorPane>
             </content>
@@ -118,7 +118,7 @@
                               <MenuItem mnemonicParsing="false" onAction="#printByDepartment" text="Print By Department" />
                           </items>
                         </MenuButton>
-                        <TextArea layoutX="8.0" layoutY="47.0" prefHeight="317.0" prefWidth="584.0" />
+                        <TextArea layoutX="8.0" layoutY="47.0" prefHeight="317.0" prefWidth="584.0" editable="false"/>
                      </children>
                   </AnchorPane>
             </content>
