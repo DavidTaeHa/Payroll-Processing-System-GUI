@@ -19,7 +19,7 @@ public class Controller {
     private DatePicker dateField;
 
     @FXML
-    private HBox departmentGroup, employeeGroup, managementGroup;
+    private HBox employeeGroup, managementGroup;
 
     @FXML
     private ToggleGroup department, employee, management;
@@ -31,14 +31,25 @@ public class Controller {
     private MenuItem importButton, exportButton, printButton, printDateButton, printDepartmentButton;
 
     @FXML
-    private RadioButton fulltimeButton, parttimeButton, managementButton;
+    private RadioButton fulltimeButton, parttimeButton, managementButton,
+            managerButton, deptHeadButton, directorButton;
+
+    private void resetManagement(RadioButton managerButton, RadioButton deptHeadButton, RadioButton directorButton){
+        managerButton.setSelected(false);
+        deptHeadButton.setSelected(false);
+        directorButton.setSelected(false);
+    }
 
     @FXML
     /**
      * Enables the text fields that are required to add a fulltime employee
      */
     void enableFulltime(ActionEvent event) {
-        
+        salaryField.setDisable(false);
+        hoursField.setDisable(true);
+        hourlyField.setDisable(true);
+        managementGroup.setDisable(true);
+        resetManagement(managerButton, deptHeadButton, directorButton);
     }
 
     @FXML
@@ -46,7 +57,10 @@ public class Controller {
      * Enables the text fields that are required to add a management employee
      */
     void enableManagement(ActionEvent event) {
-
+        salaryField.setDisable(false);
+        hoursField.setDisable(true);
+        hourlyField.setDisable(true);
+        managementGroup.setDisable(false);
     }
 
     @FXML
@@ -54,7 +68,11 @@ public class Controller {
      * Enables the text fields that are required to add a parttime employee
      */
     void enableParttime(ActionEvent event) {
-
+        salaryField.setDisable(true);
+        hoursField.setDisable(false);
+        hourlyField.setDisable(false);
+        managementGroup.setDisable(true);
+        resetManagement(managerButton, deptHeadButton, directorButton);
     }
 
     @FXML
