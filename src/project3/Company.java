@@ -150,7 +150,7 @@ public class Company {
         if(finalText.equals("")){
             return "**Employee database is empty**";
         }
-        return "--Printing earning statements for all employees--\n" + finalText;
+        return finalText;
     }
 
     /**
@@ -176,7 +176,7 @@ public class Company {
             emplist[min] = temp;
             min = INVALID;
         }
-        return "--Printing earning statements by department--\n" + print();
+        return print();
     }
 
     /**
@@ -202,6 +202,6 @@ public class Company {
             emplist[min] = temp;
             min = INVALID;
         }
-        return "--Printing earning statements by date hired--\n" + print();
+        return print();
     }
 }

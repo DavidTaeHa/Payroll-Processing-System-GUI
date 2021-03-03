@@ -17,6 +17,8 @@ public class Controller {
     final static int MANAGER = 1;
     final static int DEPARTMENT_HEAD = 2;
     final static int DIRECTOR = 3;
+    final static int MIN_HOURS = 0;
+    final static int MAX_HOURS = 100;
 
     @FXML
     private TextField nameField, salaryField, hoursField, hourlyField;
@@ -45,7 +47,7 @@ public class Controller {
 
     private Company company = new Company();
 
-    private void resetManagement(RadioButton managerButton, RadioButton deptHeadButton, RadioButton directorButton){
+    private void resetManagement(RadioButton managerButton, RadioButton deptHeadButton, RadioButton directorButton) {
         managerButton.setSelected(false);
         deptHeadButton.setSelected(false);
         directorButton.setSelected(false);
@@ -96,10 +98,9 @@ public class Controller {
      * Enables the button that is required to set the hours of a parttime employee
      */
     void enableSetHours(KeyEvent event) {
-        if(!hoursField.getText().isEmpty()){
+        if (!hoursField.getText().isEmpty()) {
             setHoursButton.setDisable(false);
-        }
-        else{
+        } else {
             setHoursButton.setDisable(true);
         }
     }
@@ -107,32 +108,27 @@ public class Controller {
     /**
      * Helper method to see if required fields are filled to enable the add button in the GUI
      */
-    private void enableAdd(){
-        if(employee.getSelectedToggle() != null && employee.getSelectedToggle().equals(fulltimeButton)){
-            if(!nameField.getText().isEmpty() && department.getSelectedToggle() != null &&
-                    dateField.getValue() != null && !salaryField.getText().isEmpty()){
+    private void enableAdd() {
+        if (employee.getSelectedToggle() != null && employee.getSelectedToggle().equals(fulltimeButton)) {
+            if (!nameField.getText().isEmpty() && department.getSelectedToggle() != null &&
+                    dateField.getValue() != null && !salaryField.getText().isEmpty()) {
                 addButton.setDisable(false);
-            }
-            else{
+            } else {
                 addButton.setDisable(true);
             }
-        }
-        else if(employee.getSelectedToggle() != null && employee.getSelectedToggle().equals(parttimeButton)){
-            if(!nameField.getText().isEmpty() && department.getSelectedToggle() != null &&
-                    dateField.getValue() != null && !hourlyField.getText().isEmpty()){
+        } else if (employee.getSelectedToggle() != null && employee.getSelectedToggle().equals(parttimeButton)) {
+            if (!nameField.getText().isEmpty() && department.getSelectedToggle() != null &&
+                    dateField.getValue() != null && !hourlyField.getText().isEmpty()) {
                 addButton.setDisable(false);
-            }
-            else{
+            } else {
                 addButton.setDisable(true);
             }
-        }
-        else if(employee.getSelectedToggle() != null && employee.getSelectedToggle().equals(managementButton)){
-            if(!nameField.getText().isEmpty() && department.getSelectedToggle() != null &&
+        } else if (employee.getSelectedToggle() != null && employee.getSelectedToggle().equals(managementButton)) {
+            if (!nameField.getText().isEmpty() && department.getSelectedToggle() != null &&
                     dateField.getValue() != null && !salaryField.getText().isEmpty() &&
-                    management.getSelectedToggle() != null){
+                    management.getSelectedToggle() != null) {
                 addButton.setDisable(false);
-            }
-            else{
+            } else {
                 addButton.setDisable(true);
             }
         }
@@ -159,11 +155,10 @@ public class Controller {
     /**
      * Helper method to check if required fields are filled and enable button to remove employees from the container
      */
-    private void enableRemove(){
-        if(!nameField.getText().isEmpty() && dateField.getValue() != null && department.getSelectedToggle() != null){
+    private void enableRemove() {
+        if (!nameField.getText().isEmpty() && dateField.getValue() != null && department.getSelectedToggle() != null) {
             removeButton.setDisable(false);
-        }
-        else{
+        } else {
             removeButton.setDisable(true);
         }
     }
@@ -173,7 +168,7 @@ public class Controller {
      * Method to check if name field, department field, and date field are not null so that the add or remove button
      * can be enable
      */
-    void enableAddRemove(){
+    void enableAddRemove() {
         enableAdd();
         enableRemove();
     }
@@ -191,33 +186,31 @@ public class Controller {
             outputText.appendText(date + " is not a valid date!\n");
             return;
         }
-        if((!salaryField.getText().isEmpty() && Double.parseDouble(salaryField.getText()) < 0) ||
-                (!hourlyField.getText().isEmpty() && Double.parseDouble(hourlyField.getText()) < 0)){
+        if ((!salaryField.getText().isEmpty() && Double.parseDouble(salaryField.getText()) < 0) ||
+                (!hourlyField.getText().isEmpty() && Double.parseDouble(hourlyField.getText()) < 0)) {
             outputText.appendText("Salary or hourly pay cannot be negative.\n");
             return;
         }
         RadioButton newDepartment = (RadioButton) department.getSelectedToggle();
-        Profile profile = new Profile (nameField.getText(), newDepartment.getText(), date);
-        if(employee.getSelectedToggle().equals(fulltimeButton)){
+        Profile profile = new Profile(nameField.getText(), newDepartment.getText(), date);
+        if (employee.getSelectedToggle().equals(fulltimeButton)) {
             Fulltime fulltime = new Fulltime(profile, Double.parseDouble(salaryField.getText()));
             if (!company.add(fulltime)) {
                 outputText.appendText("Employee is already in the list\n");
             } else {
                 outputText.appendText("Employee added.\n");
             }
-        }
-        else if(employee.getSelectedToggle().equals(parttimeButton)){
+        } else if (employee.getSelectedToggle().equals(parttimeButton)) {
             Parttime parttime = new Parttime(profile, Double.parseDouble(hourlyField.getText()));
             if (!company.add(parttime)) {
                 outputText.appendText("Employee is already in the list\n");
             } else {
                 outputText.appendText("Employee added.\n");
             }
-        }
-        else if(employee.getSelectedToggle().equals(managementButton)){
+        } else if (employee.getSelectedToggle().equals(managementButton)) {
             RadioButton newManagement = (RadioButton) management.getSelectedToggle();
             int managementRole = -1;
-            switch (newManagement.getText()){
+            switch (newManagement.getText()) {
                 case "Manager":
                     managementRole = MANAGER;
                     break;
@@ -246,12 +239,8 @@ public class Controller {
     public void removeEmployee(ActionEvent event) {
         Date date = new Date(dateField.getValue().getMonthValue() + "/" + dateField.getValue().getDayOfMonth() +
                 "/" + dateField.getValue().getYear());
-        if (!date.isValid()) {
-            outputText.appendText(date + " is not a valid date!\n");
-            return;
-        }
         RadioButton newDepartment = (RadioButton) department.getSelectedToggle();
-        Profile profile = new Profile (nameField.getText(), newDepartment.getText(), date);
+        Profile profile = new Profile(nameField.getText(), newDepartment.getText(), date);
         Employee employee = new Employee(profile);
         if (!company.remove(employee)) {
             outputText.appendText("Employee doesn’t exist.\n");
@@ -267,7 +256,40 @@ public class Controller {
      * @param mouseEvent
      */
     public void setHours(ActionEvent event) {
+        try {
+            int hours = Integer.parseInt(hoursField.getText());
+            if (hours < MIN_HOURS) {
+                outputText.appendText("Working hours cannot be negative.\n");
+                return;
+            } else if (hours > MAX_HOURS) {
+                outputText.appendText("Invalid Hours: over 100\n");
+                return;
+            }
+            Date date = new Date(dateField.getValue().getMonthValue() + "/" + dateField.getValue().getDayOfMonth() +
+                    "/" + dateField.getValue().getYear());
+            RadioButton newDepartment = (RadioButton) department.getSelectedToggle();
+            Profile profile = new Profile(nameField.getText(), newDepartment.getText(), date);
+            Parttime parttime = new Parttime(profile, 0.0);
+            parttime.setHoursWorked(hours);
+            if (!company.setHours(parttime)) {
+                outputText.appendText("Employee doesn’t exist.\n");
+            } else {
+                outputText.appendText("Working hours set.\n");
+            }
+        } catch (NumberFormatException e) {
+            outputText.appendText("Number of hours must be a whole number.\n");
+            return;
+        }
+    }
 
+    @FXML
+    /**
+     * Calculates the payment for all employees within the container
+     */
+    public void calculate(ActionEvent event){
+        listArea.clear();
+        company.processPayments();
+        listArea.appendText("Calculation of employee payments is done.\n");
     }
 
     @FXML
@@ -296,7 +318,7 @@ public class Controller {
      */
     public void print(ActionEvent event) {
         listArea.clear();
-        listArea.appendText(company.print());
+        listArea.appendText("--Printing earning statements for all employees--\n" + company.print());
     }
 
     @FXML
@@ -307,7 +329,7 @@ public class Controller {
      */
     public void printByDate(ActionEvent event) {
         listArea.clear();
-        listArea.appendText(company.printByDate());
+        listArea.appendText("--Printing earning statements by date hired--\n" + company.printByDate());
     }
 
     @FXML
@@ -318,6 +340,6 @@ public class Controller {
      */
     public void printByDepartment(ActionEvent event) {
         listArea.clear();
-        listArea.appendText(company.printByDepartment());
+        listArea.appendText("--Printing earning statements by department--\n" + company.printByDepartment());
     }
 }

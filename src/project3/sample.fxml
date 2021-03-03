@@ -119,7 +119,7 @@
                           </items>
                         </MenuButton>
                         <TextArea fx:id="listArea" editable="false" layoutX="8.0" layoutY="47.0" prefHeight="478.0" prefWidth="584.0" />
-                        <Button fx:id="computeButton" layoutX="151.0" layoutY="14.0" mnemonicParsing="false" text="Compute Payment" />
+                        <Button fx:id="computeButton" layoutX="151.0" layoutY="14.0" mnemonicParsing="false" onAction="#calculate" text="Compute Payment" />
                      </children>
                   </AnchorPane>
             </content>
