@@ -7,6 +7,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 
+import java.util.InputMismatchException;
+
 /**
  * Class that will handle all the user input and output
  *
@@ -186,9 +188,15 @@ public class Controller {
             outputText.appendText(date + " is not a valid date!\n");
             return;
         }
-        if ((!salaryField.getText().isEmpty() && Double.parseDouble(salaryField.getText()) < 0) ||
-                (!hourlyField.getText().isEmpty() && Double.parseDouble(hourlyField.getText()) < 0)) {
-            outputText.appendText("Salary or hourly pay cannot be negative.\n");
+        try {
+            if ((!salaryField.getText().isEmpty() && Double.parseDouble(salaryField.getText()) < 0) ||
+                    (!hourlyField.getText().isEmpty() && Double.parseDouble(hourlyField.getText()) < 0)) {
+                outputText.appendText("Salary or hourly pay cannot be negative.\n");
+                return;
+            }
+        }
+        catch(NumberFormatException e){
+            outputText.appendText("Salary or hourly pay must be a number.\n");
             return;
         }
         RadioButton newDepartment = (RadioButton) department.getSelectedToggle();
@@ -209,7 +217,7 @@ public class Controller {
             }
         } else if (employee.getSelectedToggle().equals(managementButton)) {
             RadioButton newManagement = (RadioButton) management.getSelectedToggle();
-            int managementRole = -1;
+            int managementRole = 0;
             switch (newManagement.getText()) {
                 case "Manager":
                     managementRole = MANAGER;
