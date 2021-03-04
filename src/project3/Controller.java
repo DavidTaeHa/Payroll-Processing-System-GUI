@@ -65,6 +65,13 @@ public class Controller {
 
     private Company company = new Company();
 
+    /**
+     * Helper method used to reset selections for management roles in the case that the employee type is changed
+     *
+     * @param managerButton  Radio Button for manager
+     * @param deptHeadButton Radio Button for department head
+     * @param directorButton Radio Button for director
+     */
     private void resetManagement(RadioButton managerButton, RadioButton deptHeadButton, RadioButton directorButton) {
         managerButton.setSelected(false);
         deptHeadButton.setSelected(false);
@@ -113,7 +120,7 @@ public class Controller {
 
     @FXML
     /**
-     * Enables the button that is required to set the hours of a parttime employee
+     * Checks if hours field is filled and enables the button that is required to set the hours of a parttime employee
      */
     void enableSetHours(KeyEvent event) {
         if (!hoursField.getText().isEmpty()) {
@@ -124,7 +131,7 @@ public class Controller {
     }
 
     /**
-     * Helper method to see if required fields are filled to enable the add button in the GUI
+     * Helper method to help check and see if required fields are filled to enable the add button in the GUI
      */
     private void enableAdd() {
         if (employee.getSelectedToggle() != null && employee.getSelectedToggle().equals(fulltimeButton)) {
@@ -210,8 +217,7 @@ public class Controller {
                 outputText.appendText("Salary or hourly pay cannot be negative.\n");
                 return;
             }
-        }
-        catch(NumberFormatException e){
+        } catch (NumberFormatException e) {
             outputText.appendText("Salary or hourly pay must be a number.\n");
             return;
         }
@@ -310,7 +316,7 @@ public class Controller {
     /**
      * Calculates the payment for all employees within the container
      */
-    public void calculate(ActionEvent event){
+    public void calculate(ActionEvent event) {
         listArea.clear();
         company.processPayments();
         listArea.appendText("Calculation of employee payments is done.\n");
@@ -322,34 +328,41 @@ public class Controller {
      *
      * @param actionEvent
      */
-    public void importData(ActionEvent event) throws FileNotFoundException {
-        FileChooser chooser = new FileChooser();
-        File file = chooser.showOpenDialog(null);
-        Scanner scanner = new Scanner(file);
-        while(scanner.hasNextLine()){
-            String employee = scanner.nextLine();
-            String[] parameters = employee.split(",");
-            String command = parameters[FIRST_PARAMETER];
-            Profile profile = new Profile(parameters[SECOND_PARAMETER], parameters[THIRD_PARAMETER],
-                    new Date(parameters[FOURTH_PARAMETER]));
-            switch(command){
-                case "P":
-                    Parttime parttime = new Parttime(profile, Double.parseDouble(parameters[FIFTH_PARAMETER]));
-                    company.add(parttime);
-                    break;
-                case "F":
-                    Fulltime fulltime = new Fulltime(profile, Double.parseDouble(parameters[FIFTH_PARAMETER]));
-                    company.add(fulltime);
-                    break;
-                case "M":
-                    Management management = new Management(profile, Double.parseDouble(parameters[FIFTH_PARAMETER]),
-                            Integer.parseInt(parameters[SIXTH_PARAMETER]));
-                    company.add(management);
+    public void importData(ActionEvent event) {
+        try {
+            listArea.clear();
+            FileChooser chooser = new FileChooser();
+            File file = chooser.showOpenDialog(null);
+            if (!file.getName().endsWith(".txt")) {
+                throw new FileNotFoundException();
             }
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNextLine()) {
+                String employee = scanner.nextLine();
+                String[] parameters = employee.split(",");
+                String command = parameters[FIRST_PARAMETER];
+                Profile profile = new Profile(parameters[SECOND_PARAMETER], parameters[THIRD_PARAMETER],
+                        new Date(parameters[FOURTH_PARAMETER]));
+                switch (command) {
+                    case "P":
+                        Parttime parttime = new Parttime(profile, Double.parseDouble(parameters[FIFTH_PARAMETER]));
+                        company.add(parttime);
+                        break;
+                    case "F":
+                        Fulltime fulltime = new Fulltime(profile, Double.parseDouble(parameters[FIFTH_PARAMETER]));
+                        company.add(fulltime);
+                        break;
+                    case "M":
+                        Management management = new Management(profile, Double.parseDouble(parameters[FIFTH_PARAMETER]),
+                                Integer.parseInt(parameters[SIXTH_PARAMETER]));
+                        company.add(management);
+                }
+            }
+            scanner.close();
+            listArea.appendText("Employee database successfully imported.\n");
+        } catch (FileNotFoundException e) {
+            listArea.appendText("Invalid file format.\n");
         }
-        scanner.close();
-        listArea.clear();
-        listArea.appendText("Employee database successfully imported.");
     }
 
     @FXML
@@ -358,14 +371,18 @@ public class Controller {
      *
      * @param actionEvent
      */
-    public void exportData(ActionEvent actionEvent) throws IOException {
-        listArea.clear();
-        if(company.getNumEmployee() == 0){
-            listArea.appendText("Database is empty.");
-            return;
+    public void exportData(ActionEvent actionEvent) {
+        try {
+            listArea.clear();
+            if (company.getNumEmployee() == 0) {
+                listArea.appendText("Database is empty.\n");
+                return;
+            }
+            listArea.appendText("Database successfully exported.\n");
+            company.exportDatabase();
+        } catch (IOException e) {
+            listArea.appendText("IO exception.\n");
         }
-        listArea.appendText("Database successfully exported.");
-        company.exportDatabase();
     }
 
     @FXML
@@ -376,8 +393,8 @@ public class Controller {
      */
     public void print(ActionEvent event) {
         listArea.clear();
-        if(company.getNumEmployee() == 0){
-            listArea.appendText("Database is empty.");
+        if (company.getNumEmployee() == 0) {
+            listArea.appendText("Database is empty.\n");
             return;
         }
         listArea.appendText("--Printing earning statements for all employees--\n" + company.print());
@@ -391,8 +408,8 @@ public class Controller {
      */
     public void printByDate(ActionEvent event) {
         listArea.clear();
-        if(company.getNumEmployee() == 0){
-            listArea.appendText("Database is empty.");
+        if (company.getNumEmployee() == 0) {
+            listArea.appendText("Database is empty.\n");
             return;
         }
         listArea.appendText("--Printing earning statements by date hired--\n" + company.printByDate());
@@ -406,8 +423,8 @@ public class Controller {
      */
     public void printByDepartment(ActionEvent event) {
         listArea.clear();
-        if(company.getNumEmployee() == 0){
-            listArea.appendText("Database is empty.");
+        if (company.getNumEmployee() == 0) {
+            listArea.appendText("Database is empty.\n");
             return;
         }
         listArea.appendText("--Printing earning statements by department--\n" + company.printByDepartment());
