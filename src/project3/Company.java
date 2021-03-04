@@ -159,9 +159,6 @@ public class Company {
                 finalText = finalText + employee + "\n";
             }
         }
-        if(finalText.equals("")){
-            return "**Employee database is empty**";
-        }
         return finalText;
     }
 

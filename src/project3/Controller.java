@@ -360,6 +360,10 @@ public class Controller {
      */
     public void exportData(ActionEvent actionEvent) throws IOException {
         listArea.clear();
+        if(company.getNumEmployee() == 0){
+            listArea.appendText("Database is empty.");
+            return;
+        }
         listArea.appendText("Database successfully exported.");
         company.exportDatabase();
     }
@@ -372,6 +376,10 @@ public class Controller {
      */
     public void print(ActionEvent event) {
         listArea.clear();
+        if(company.getNumEmployee() == 0){
+            listArea.appendText("Database is empty.");
+            return;
+        }
         listArea.appendText("--Printing earning statements for all employees--\n" + company.print());
     }
 
@@ -383,6 +391,10 @@ public class Controller {
      */
     public void printByDate(ActionEvent event) {
         listArea.clear();
+        if(company.getNumEmployee() == 0){
+            listArea.appendText("Database is empty.");
+            return;
+        }
         listArea.appendText("--Printing earning statements by date hired--\n" + company.printByDate());
     }
 
@@ -394,6 +406,10 @@ public class Controller {
      */
     public void printByDepartment(ActionEvent event) {
         listArea.clear();
+        if(company.getNumEmployee() == 0){
+            listArea.appendText("Database is empty.");
+            return;
+        }
         listArea.appendText("--Printing earning statements by department--\n" + company.printByDepartment());
     }
 }
