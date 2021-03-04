@@ -367,6 +367,8 @@ public class Controller {
             listArea.appendText("Employee database successfully imported.\n");
         } catch (FileNotFoundException e) {
             listArea.appendText("Invalid file format.\n");
+        } catch (ArrayIndexOutOfBoundsException e){
+            listArea.appendText("Text file is not formatted correctly for importation.");
         }
     }
 
