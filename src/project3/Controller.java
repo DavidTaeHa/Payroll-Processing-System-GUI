@@ -6,8 +6,12 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.stage.FileChooser;
 
-import java.util.InputMismatchException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
 
 /**
  * Class that will handle all the user input and output
@@ -21,6 +25,12 @@ public class Controller {
     final static int DIRECTOR = 3;
     final static int MIN_HOURS = 0;
     final static int MAX_HOURS = 100;
+    final static int FIRST_PARAMETER = 0;
+    final static int SECOND_PARAMETER = 1;
+    final static int THIRD_PARAMETER = 2;
+    final static int FOURTH_PARAMETER = 3;
+    final static int FIFTH_PARAMETER = 4;
+    final static int SIXTH_PARAMETER = 5;
 
     @FXML
     private TextField nameField, salaryField, hoursField, hourlyField;
@@ -306,7 +316,34 @@ public class Controller {
      *
      * @param actionEvent
      */
-    public void importData(ActionEvent event) {
+    public void importData(ActionEvent event) throws FileNotFoundException {
+        FileChooser chooser = new FileChooser();
+        File file = chooser.showOpenDialog(null);
+        Scanner scanner = new Scanner(file);
+        while(scanner.hasNextLine()){
+            String employee = scanner.nextLine();
+            String[] parameters = employee.split(",");
+            String command = parameters[FIRST_PARAMETER];
+            Profile profile = new Profile(parameters[SECOND_PARAMETER], parameters[THIRD_PARAMETER],
+                    new Date(parameters[FOURTH_PARAMETER]));
+            switch(command){
+                case "P":
+                    Parttime parttime = new Parttime(profile, Double.parseDouble(parameters[FIFTH_PARAMETER]));
+                    company.add(parttime);
+                    break;
+                case "F":
+                    Fulltime fulltime = new Fulltime(profile, Double.parseDouble(parameters[FIFTH_PARAMETER]));
+                    company.add(fulltime);
+                    break;
+                case "M":
+                    Management management = new Management(profile, Double.parseDouble(parameters[FIFTH_PARAMETER]),
+                            Integer.parseInt(parameters[SIXTH_PARAMETER]));
+                    company.add(management);
+            }
+        }
+        scanner.close();
+        listArea.clear();
+        listArea.appendText("Employee database successfully imported.");
     }
 
     @FXML
@@ -315,7 +352,10 @@ public class Controller {
      *
      * @param actionEvent
      */
-    public void exportData(ActionEvent actionEvent) {
+    public void exportData(ActionEvent actionEvent) throws IOException {
+        listArea.clear();
+        listArea.appendText("Database successfully exported.");
+        company.exportDatabase();
     }
 
     @FXML

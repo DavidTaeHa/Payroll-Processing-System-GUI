@@ -1,5 +1,7 @@
 package project3;
 
+import java.io.*;
+
 /**
  * This class represents a company container that will contain instances of employees
  *
@@ -135,6 +137,16 @@ public class Company {
                 emplist[i].calculatePayment();
             }
         }
+    }
+
+    /**
+     * Writes employees within the database to a text file
+     */
+    public void exportDatabase() throws IOException {
+        File file = new File("export.txt");
+        PrintWriter writer = new PrintWriter(new FileWriter(file));
+        writer.println(print());
+        writer.close();
     }
 
     /**
