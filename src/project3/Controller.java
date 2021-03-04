@@ -320,6 +320,10 @@ public class Controller {
      */
     public void calculate(ActionEvent event) {
         listArea.clear();
+        if (company.getNumEmployee() == EMPTY) {
+            listArea.appendText("Database is empty.\n");
+            return;
+        }
         company.processPayments();
         listArea.appendText("Calculation of employee payments is done.\n");
     }
