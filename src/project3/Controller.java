@@ -6,7 +6,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
@@ -53,10 +52,7 @@ public class Controller {
     private ToggleGroup department, employee, management;
 
     @FXML
-    private Button addButton, removeButton, setHoursButton, computeButton;
-
-    @FXML
-    private MenuItem importButton, exportButton, printButton, printDateButton, printDepartmentButton;
+    private Button addButton, removeButton, setHoursButton;
 
     @FXML
     private RadioButton fulltimeButton, parttimeButton, managementButton,
@@ -311,6 +307,10 @@ public class Controller {
         } catch (NumberFormatException e) {
             outputText.appendText("Number of hours must be a whole number.\n");
             return;
+        } catch (NullPointerException e){
+            outputText.appendText("Must fill in all profile fields to set hour for an employee.\n");
+        } catch (ClassCastException e){
+            outputText.appendText("Employee is not a parttime employee.\n");
         }
     }
 

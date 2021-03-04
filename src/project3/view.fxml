@@ -62,13 +62,13 @@
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Employee Type:" GridPane.rowIndex="2" />
                               <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                  <children>
-                                    <RadioButton fx:id="fulltimeButton" mnemonicParsing="false" onAction="#enableFulltime" prefHeight="18.0" prefWidth="77.0" text="Fulltime">
+                                    <RadioButton fx:id="fulltimeButton" mnemonicParsing="false" onAction="#enableFulltime" onMouseClicked="#enableAddMouse" prefHeight="18.0" prefWidth="77.0" text="Fulltime">
                                        <toggleGroup>
                                           <ToggleGroup fx:id="employee" />
                                        </toggleGroup>
                                     </RadioButton>
-                                    <RadioButton fx:id="parttimeButton" mnemonicParsing="false" onAction="#enableParttime" prefHeight="18.0" prefWidth="77.0" text="Parttime" toggleGroup="$employee" />
-                                    <RadioButton fx:id="managementButton" mnemonicParsing="false" onAction="#enableManagement" text="Management" toggleGroup="$employee" />
+                                    <RadioButton fx:id="parttimeButton" mnemonicParsing="false" onAction="#enableParttime" onMouseClicked="#enableAddMouse" prefHeight="18.0" prefWidth="77.0" text="Parttime" toggleGroup="$employee" />
+                                    <RadioButton fx:id="managementButton" mnemonicParsing="false" onAction="#enableManagement" onMouseClicked="#enableAddMouse" text="Management" toggleGroup="$employee" />
                                  </children>
                               </HBox>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hours Worked:" GridPane.rowIndex="7" />
