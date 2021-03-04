@@ -13,6 +13,7 @@ public class Company {
 
     final static int LIST_INCREMENT_VALUE = 4;
     final static int INVALID = -1;
+    final static int LESS = -1;
 
     /**
      * Constructor for company class
@@ -202,7 +203,7 @@ public class Company {
                 if (emplist[j] == null) {
                     continue;
                 }
-                if (emplist[j].getProfile().getDateHired().compareTo(emplist[min].getProfile().getDateHired()) == -1) {
+                if (emplist[j].getProfile().getDateHired().compareTo(emplist[min].getProfile().getDateHired()) == LESS) {
                     min = j;
                 }
             }

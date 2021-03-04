@@ -37,6 +37,8 @@ public class Controller {
     final static int FOURTH_PARAMETER = 3;
     final static int FIFTH_PARAMETER = 4;
     final static int SIXTH_PARAMETER = 5;
+    final static int PLACEHOLDER = -1;
+    final static int EMPTY = 0;
 
     @FXML
     private TextField nameField, salaryField, hoursField, hourlyField;
@@ -239,7 +241,7 @@ public class Controller {
             }
         } else if (employee.getSelectedToggle().equals(managementButton)) {
             RadioButton newManagement = (RadioButton) management.getSelectedToggle();
-            int managementRole = 0;
+            int managementRole = PLACEHOLDER;
             switch (newManagement.getText()) {
                 case "Manager":
                     managementRole = MANAGER;
@@ -299,7 +301,7 @@ public class Controller {
                     "/" + dateField.getValue().getYear());
             RadioButton newDepartment = (RadioButton) department.getSelectedToggle();
             Profile profile = new Profile(nameField.getText(), newDepartment.getText(), date);
-            Parttime parttime = new Parttime(profile, 0.0);
+            Parttime parttime = new Parttime(profile, PLACEHOLDER);
             parttime.setHoursWorked(hours);
             if (!company.setHours(parttime)) {
                 outputText.appendText("Employee doesn’t exist.\n");
@@ -393,7 +395,7 @@ public class Controller {
      */
     public void print(ActionEvent event) {
         listArea.clear();
-        if (company.getNumEmployee() == 0) {
+        if (company.getNumEmployee() == EMPTY) {
             listArea.appendText("Database is empty.\n");
             return;
         }
@@ -408,7 +410,7 @@ public class Controller {
      */
     public void printByDate(ActionEvent event) {
         listArea.clear();
-        if (company.getNumEmployee() == 0) {
+        if (company.getNumEmployee() == EMPTY) {
             listArea.appendText("Database is empty.\n");
             return;
         }
@@ -423,7 +425,7 @@ public class Controller {
      */
     public void printByDepartment(ActionEvent event) {
         listArea.clear();
-        if (company.getNumEmployee() == 0) {
+        if (company.getNumEmployee() == EMPTY) {
             listArea.appendText("Database is empty.\n");
             return;
         }
