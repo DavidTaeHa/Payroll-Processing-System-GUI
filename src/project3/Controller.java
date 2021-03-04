@@ -306,9 +306,8 @@ public class Controller {
             }
         } catch (NumberFormatException e) {
             outputText.appendText("Number of hours must be a whole number.\n");
-            return;
         } catch (NullPointerException e){
-            outputText.appendText("Must fill in all profile fields to set hour for an employee.\n");
+            outputText.appendText("Must fill in all profile fields to set hour for a parttime employee.\n");
         } catch (ClassCastException e){
             outputText.appendText("Employee is not a parttime employee.\n");
         }
