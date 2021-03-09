@@ -1,9 +1,12 @@
 package project3;
 
-import java.io.*;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.io.File;
+import java.io.IOException;
 
 /**
- * This class represents a company container that will contain instances of employees
+ * This class represents a company container that will contain instances of employee classes
  *
  * @author David Ha, Andrew McAvoy
  */
@@ -47,7 +50,7 @@ public class Company {
     }
 
     /**
-     * Helper method to increase capacity of array if the container if full
+     * Helper method to increase capacity of array by 4 if the container is full
      */
     private void grow() {
         Employee[] temp = new Employee[emplist.length + LIST_INCREMENT_VALUE];
@@ -110,7 +113,7 @@ public class Company {
     }
 
     /**
-     * Sets number of hours for a parttime employee
+     * Sets number of hours worked for a parttime employee
      *
      * @param employee employee's hours to be modified
      * @return true if successfully modified; false if employee does not exist
@@ -141,7 +144,9 @@ public class Company {
     }
 
     /**
-     * Writes employees within the database to a text file
+     * Exports and writes employees within the database to a text file
+     *
+     * @throws IOException
      */
     public void exportDatabase() throws IOException {
         File file = new File("export.txt");
@@ -151,7 +156,9 @@ public class Company {
     }
 
     /**
-     * Prints earning statements for all employees
+     * Prints earning statements for all employees in the current state of the database
+     *
+     * @return String of all employees in the database in its current state
      */
     public String print() {
         String finalText = "";
@@ -165,6 +172,8 @@ public class Company {
 
     /**
      * Prints earning statements by department
+     *
+     * @return String of all employees in the database ordered by department
      */
     public String printByDepartment() {
         int min = INVALID;
@@ -190,7 +199,9 @@ public class Company {
     }
 
     /**
-     * Prints earning statements by date hired
+     * Prints earning statements by date hired ascending
+     *
+     * @return String of all employees in the database ordered by date hired ascending
      */
     public String printByDate() {
         int min = INVALID;

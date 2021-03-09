@@ -3,7 +3,7 @@ package project3;
 import java.text.DecimalFormat;
 
 /**
- * This class extends the employee class and contains data elements and operations specific to a part-time employee
+ * This class extends the employee class and contains attributes and operations specific to a part-time employee
  *
  * @author David Ha, Andrew McAvoy
  */
@@ -27,7 +27,7 @@ public class Parttime extends Employee{
     }
 
     /**
-     * Calculates payment of the employee
+     * Calculates payment of the parttime employee
      */
     @Override
     public void calculatePayment(){

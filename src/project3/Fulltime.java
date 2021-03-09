@@ -3,7 +3,7 @@ package project3;
 import java.text.DecimalFormat;
 
 /**
- * This class extends the employee class and contains data elements and operations specific to a full-time employee
+ * This class extends the employee class and contains attributes and operations specific to a full-time employee
  *
  * @author David Ha, Andrew McAvoy
  */
@@ -16,6 +16,7 @@ public class Fulltime extends Employee {
      * Constructor for Fulltime class
      *
      * @param profile profile for the employee
+     * @param annualSalary salary of the employee
      */
     public Fulltime(Profile profile, double annualSalary) {
         super(profile);
@@ -32,7 +33,7 @@ public class Fulltime extends Employee {
     }
 
     /**
-     * Calculates payment of the employee
+     * Calculates payment of the fulltime employee
      */
     @Override
     public void calculatePayment() {

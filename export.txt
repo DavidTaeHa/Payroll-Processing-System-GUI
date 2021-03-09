@@ -1,13 +1,11 @@
-qwer::CS::03/04/2021::Payment $0.00::PART TIME::Hourly Rate $123.00::Hours worked this period: 0
-asdf::CS::03/04/2021::Payment $474.81::FULL TIME::Annual Salary $12,345.00
-Jane Doe::CS::07/01/2020::Payment $0.00::PART TIME::Hourly Rate $45.90::Hours worked this period: 0
-John Doe::CS::06/30/2019::Payment $0.00::FULL TIME::Annual Salary $76,430.00
-Charlie Brown::CS::04/30/2019::Payment $0.00::FULL TIME::Annual Salary $56,000.00
-Amy Harrison::IT::03/31/2020::Payment $0.00::FULL TIME::Annual Salary $69,000.00
-Eric Haskell::IT::09/01/2015::Payment $0.00::FULL TIME::Annual Salary $101,000.00::DepartmentHead Compensation $365.38
-Sunny White::IT::02/28/2016::Payment $0.00::FULL TIME::Annual Salary $89,300.00::Manager Compensation $192.31
-Henry Young::IT::02/01/2005::Payment $0.00::FULL TIME::Annual Salary $120,000.00::Director Compensation $461.54
-Bob Scanlan::ECE::05/12/2019::Payment $0.00::PART TIME::Hourly Rate $24.59::Hours worked this period: 0
 Jeff Clinton::ECE::10/01/2001::Payment $0.00::PART TIME::Hourly Rate $39.99::Hours worked this period: 0
+Henry Young::IT::02/01/2005::Payment $5,076.92::FULL TIME::Annual Salary $120,000.00::Director Compensation $461.54
+Eric Haskell::IT::09/01/2015::Payment $4,250.00::FULL TIME::Annual Salary $101,000.00::DepartmentHead Compensation $365.38
+Sunny White::IT::02/28/2016::Payment $3,626.92::FULL TIME::Annual Salary $89,300.00::Manager Compensation $192.31
 Carey Wang::ECE::11/30/2017::Payment $0.00::PART TIME::Hourly Rate $26.59::Hours worked this period: 0
+Charlie Brown::CS::04/30/2019::Payment $2,153.85::FULL TIME::Annual Salary $56,000.00
+Bob Scanlan::ECE::05/12/2019::Payment $0.00::PART TIME::Hourly Rate $24.59::Hours worked this period: 0
+John Doe::CS::06/30/2019::Payment $2,939.62::FULL TIME::Annual Salary $76,430.00
+Amy Harrison::IT::03/31/2020::Payment $2,653.85::FULL TIME::Annual Salary $69,000.00
+Jane Doe::CS::07/01/2020::Payment $0.00::PART TIME::Hourly Rate $45.90::Hours worked this period: 0
 

@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 /**
- * Class that will handle all the user input and output
+ * Class that will handle all the user input and output made in the GUI
  *
  * @author David Ha, Andrew McAvoy
  */
@@ -79,6 +79,8 @@ public class Controller {
     @FXML
     /**
      * Enables the text fields that are required to add a fulltime employee
+     *
+     * @param event
      */
     void enableFulltime(ActionEvent event) {
         salaryField.setDisable(false);
@@ -93,6 +95,8 @@ public class Controller {
     @FXML
     /**
      * Enables the text fields that are required to add a management employee
+     *
+     * @param event
      */
     void enableManagement(ActionEvent event) {
         salaryField.setDisable(false);
@@ -106,6 +110,8 @@ public class Controller {
     @FXML
     /**
      * Enables the text fields that are required to add a parttime employee
+     *
+     * @param event
      */
     void enableParttime(ActionEvent event) {
         salaryField.setDisable(true);
@@ -119,6 +125,8 @@ public class Controller {
     @FXML
     /**
      * Checks if hours field is filled and enables the button that is required to set the hours of a parttime employee
+     *
+     * @param event
      */
     void enableSetHours(KeyEvent event) {
         if (!hoursField.getText().isEmpty()) {
@@ -161,6 +169,8 @@ public class Controller {
     /**
      * Checks required fields and enables the button that is required to add an employee to the container
      * with key event as parameter
+     *
+     * @param event
      */
     void enableAddKey(KeyEvent event) {
         enableAdd();
@@ -170,6 +180,8 @@ public class Controller {
     /**
      * Checks required fields and enables the button that is required to add an employee to the container
      * with mouse event as parameter
+     *
+     * @param event
      */
     void enableAddMouse(MouseEvent event) {
         enableAdd();
@@ -198,9 +210,9 @@ public class Controller {
 
     @FXML
     /**
-     * Adds employee to the container
+     * Adds new employee to the container
      *
-     * @param mouseEvent
+     * @param event
      */
     public void addEmployee(ActionEvent event) {
         Date date = new Date(dateField.getValue().getMonthValue() + "/" + dateField.getValue().getDayOfMonth() +
@@ -262,7 +274,7 @@ public class Controller {
     /**
      * Removes employee from the container
      *
-     * @param mouseEvent
+     * @param event
      */
     public void removeEmployee(ActionEvent event) {
         Date date = new Date(dateField.getValue().getMonthValue() + "/" + dateField.getValue().getDayOfMonth() +
@@ -279,9 +291,9 @@ public class Controller {
 
     @FXML
     /**
-     * Sets hours for a parttime employee
+     * Sets hours worked for a parttime employee
      *
-     * @param mouseEvent
+     * @param event
      */
     public void setHours(ActionEvent event) {
         try {
@@ -316,6 +328,8 @@ public class Controller {
     @FXML
     /**
      * Calculates the payment for all employees within the container
+     *
+     * @param event
      */
     public void calculate(ActionEvent event) {
         listArea.clear();
@@ -329,9 +343,9 @@ public class Controller {
 
     @FXML
     /**
-     * Imports database from a text file to the container
+     * Opens up the file explorer and allows user to import database from a text file to the container
      *
-     * @param actionEvent
+     * @param event
      */
     public void importData(ActionEvent event) {
         try {
@@ -374,11 +388,11 @@ public class Controller {
 
     @FXML
     /**
-     * Exports database to a text file
+     * Exports database to a text file in the project folder
      *
-     * @param actionEvent
+     * @param event
      */
-    public void exportData(ActionEvent actionEvent) {
+    public void exportData(ActionEvent event) {
         try {
             listArea.clear();
             if (company.getNumEmployee() == 0) {
@@ -394,9 +408,9 @@ public class Controller {
 
     @FXML
     /**
-     * Prints employees from the container
+     * Prints employees from the container in its current state
      *
-     * @param actionEvent
+     * @param event
      */
     public void print(ActionEvent event) {
         listArea.clear();
@@ -411,7 +425,7 @@ public class Controller {
     /**
      * Prints employees from the container by date hired
      *
-     * @param actionEvent
+     * @param event
      */
     public void printByDate(ActionEvent event) {
         listArea.clear();
@@ -426,7 +440,7 @@ public class Controller {
     /**
      * Prints employees from the container by department
      *
-     * @param actionEvent
+     * @param event
      */
     public void printByDepartment(ActionEvent event) {
         listArea.clear();

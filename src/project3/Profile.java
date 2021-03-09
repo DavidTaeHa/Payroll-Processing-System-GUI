@@ -1,7 +1,7 @@
 package project3;
 
 /**
- * This class defines the profile of an employee
+ * This class defines the profile of an employee which will be an instance variable of every Employee instance
  *
  * @author David Ha, Andrew McAvoy
  */

@@ -3,7 +3,7 @@ package project3;
 import java.text.DecimalFormat;
 
 /**
- * This class represents an employee at a company and defines common attributes for all employee types
+ * This class represents an employee in a company and defines common attributes for all employee subclasses
  *
  * @author David Ha, Andrew McAvoy
  */
@@ -49,7 +49,7 @@ public class Employee {
     }
 
     /**
-     * Method for the subclasses to implement for calculating payment
+     * Method for the subclasses to implement and override for calculating payment
      */
     public void calculatePayment() {
         //Overridden by subclasses

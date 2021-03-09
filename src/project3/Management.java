@@ -3,7 +3,7 @@ package project3;
 import java.text.DecimalFormat;
 
 /**
- * This class extends the employee class and contains data elements and operations specific to a full-time employee
+ * This class extends the employee class and contains attributes and operations specific to a full-time employee
  * with a management role
  *
  * @author David Ha, Andrew McAvoy
@@ -34,7 +34,7 @@ public class Management extends Fulltime {
     }
 
     /**
-     * Calculates payment of the employee
+     * Calculates payment of the management employee
      */
     @Override
     public void calculatePayment() {
