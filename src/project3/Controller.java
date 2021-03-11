@@ -383,6 +383,8 @@ public class Controller {
             listArea.appendText("Invalid file format.\n");
         } catch (ArrayIndexOutOfBoundsException e){
             listArea.appendText("Text file is not formatted correctly for importation.");
+        } catch (NullPointerException e){
+            listArea.appendText("File not selected. Please choose a valid file.");
         }
     }
 
